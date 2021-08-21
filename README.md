@@ -16,7 +16,8 @@ http://images.vfl.ru/ii/1629567426/11d4ce10/35578569.png
 
 
 ### Внешний вид личного кабинета блогера
-![lk department](http://images.vfl.ru/ii/1629525797/e0f3a98d/35572791.png)
+![lk bloger](http://images.vfl.ru/ii/1629567426/11d4ce10/35578569.png
+)
 
 ### Внешний вид личного кабинета сотрудника департамента туризма
 ![lk department](http://images.vfl.ru/ii/1629525797/e0f3a98d/35572791.png)
