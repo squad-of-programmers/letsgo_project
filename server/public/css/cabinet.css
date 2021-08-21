@@ -1,0 +1,96 @@
+.user_cabinet_wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar_max {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid white;
+  overflow: hidden;
+  position: relative;
+}
+
+.change_avatar {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  border-radius: 0%;
+  width: 100%;
+  height: 110%;
+  background-color: transparent;
+  opacity: 0;
+  cursor: pointer;
+  background-color: black;
+}
+
+.change_avatar:hover {
+  opacity: 0.6;
+}
+
+.avatar_max img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile_panel {
+  padding-top: 2em;
+  width: 20%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  color: white;
+}
+
+.created_products_area {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.delete {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* opacity: 0; */
+}
+.delete_position {
+  bottom: -1.25em;
+  right: 0.5em;
+}
+
+.edit {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* opacity: 0; */
+}
+.edit_position {
+  right: 3.5em;
+  bottom: -1.25em;
+}
+
+.white {
+  color: white;
+}
+
+.user_posts {
+}

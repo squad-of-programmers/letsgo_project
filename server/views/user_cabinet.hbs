@@ -1,0 +1,26 @@
+<div class="user_cabinet_wrapper bg_dark">
+{{!-- Left panel [User data] --}}
+  <div class="profile_panel bg_dark">
+    <form class="avatar_max">
+      <img id = "maxi_avatar" src="{{curentUser.avatar}}" alt="">
+      {{#if flag}}
+      <input name="file" type="file" class="change_avatar">
+      {{else}}
+      {{/if}}
+    </form>
+    <br>
+    <h2>{{curentUser.name}}</h2>
+    <br>
+    <h3>{{curentUser.email}}</h3>
+    <br>
+    <h4>{{curentUser.role}}</h4>
+    <br>
+  </div>
+{{!------------------------------------}}
+
+{{!-- Right panel [Content area] --}}
+  <div class="content_area">
+ 
+  </div>
+
+</div>

@@ -1,0 +1,36 @@
+{
+  "name": "assesment2",
+  "version": "1.0.0",
+  "description": "## Введение",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aekhabarov/assessment-2c-beavers2021-msk.git"
+  },
+  "keywords": [],
+  "author": "Alexandr Khabarov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aekhabarov/assessment-2c-beavers2021-msk/issues"
+  },
+  "homepage": "https://github.com/aekhabarov/assessment-2c-beavers2021-msk#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.2",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.10",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
