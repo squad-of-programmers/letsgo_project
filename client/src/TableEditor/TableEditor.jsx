@@ -6,12 +6,13 @@ import serverData from "./seed";
 export default function TableEditor() {
   let systemHeaders = ["selected"];
   //Настройки для отображения, которые сохраняются на серваке
-  const [data, setData] = useState(serverData);
+  const [data, setData] = useState(idMaker(serverData));
   //Данные получаемые с сервера
   const [headers, setHeaders] = useState([]);
   //Заголовки таблицы
   const [editors, setEditors] = useState([false, false]);
   // [0] ->> Headers Editor, [1] ->> Data Editor
+  const [id, setId] = useState()
 
   useEffect(() => {
     setHeaders((prev) => {
@@ -25,11 +26,10 @@ export default function TableEditor() {
   }, []);
 
   useEffect(() => {
+    let selectedMap = data.filter(el => el.selected === true)[0]
+    console.log('----->',selectedMap);
 
-    let selectedMap = data.map(el => el.selected);
-
-    if (Array.isArray(selectedMap)) {
-      if (selectedMap.some(el => el === true)) {
+      if (selectedMap) {
         setEditors(prev => {
           prev[0] = false;
           prev[1] = true;
@@ -37,17 +37,26 @@ export default function TableEditor() {
         })
       } else {
         setEditors(prev => {
-          prev[0] = false;
+
           prev[1] = false;
           return [...prev];
         })
       }
+    const id = data.find(el => el.selected === true)
+    if (id) {
+      setId(id.id)
     }
   }, [data]);
 
-  // useEffect(() => {
-  //   console.log(editors);
-  // }, [editors]);
+
+
+  
+  function idMaker(dataArr){
+    if(dataArr){
+      dataArr.forEach((el, indx) => el.id = indx + 1)
+      return dataArr;
+    }
+  }
 
   function changeHeadersPlaces(indx1, indx2) {
     setHeaders((prev) => {
@@ -72,7 +81,6 @@ export default function TableEditor() {
     if (headers[pointer].sort % 2 === 0) {
       k = -1;
     }
-
     setData((prev) => {
       prev.sort((a, b) => {
         if (a[fieldName] < b[fieldName]) {
@@ -103,6 +111,10 @@ export default function TableEditor() {
           : { ...el, selected: false }
       )
     );
+  }
+
+  function unSelectAllRows() {
+    setData(prev => prev.map(el => {return { ...el, selected: false }}))
   }
 
   return (
@@ -158,6 +170,7 @@ export default function TableEditor() {
       </table>
       <button
         onClick={() => {
+          unSelectAllRows();
           headerEditorController();
         }}
       >
@@ -174,7 +187,7 @@ export default function TableEditor() {
         ) : null}
       </div>
 
-      <div>{editors[1] === true ? <DataEditorPanel data={data} setData={setData}/> : null}</div>
+      <div>{editors[1] === true ? <DataEditorPanel data={data} setData={setData} id={id}/> : null}</div>
     </div>
   );
 }

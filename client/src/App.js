@@ -1,8 +1,6 @@
 import React from "react";
 import TableEditor from "./TableEditor/TableEditor";
-import {
-  BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CreateEvent from "./CreateEvent/CreateEvent";
 import RegFormBloger from "./RegFormBloger/RegFormBloger";
 import SpecCabinet from './SpecCabinet/SpecCabinet';

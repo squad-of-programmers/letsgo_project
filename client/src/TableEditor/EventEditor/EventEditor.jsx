@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function DataEditor({data, setData, id}) {
+export default function EventEditor({data, setData, id}) {
 
   
 
