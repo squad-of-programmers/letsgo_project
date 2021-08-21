@@ -26,9 +26,10 @@ export default function TableEditor() {
   }, []);
 
   useEffect(() => {
-    let selectedMap = data.map(el => el.selected);
-    if (Array.isArray(selectedMap)) {
-      if (selectedMap.some(el => el === true)) {
+    let selectedMap = data.filter(el => el.selected === true)[0]
+    console.log('----->',selectedMap);
+
+      if (selectedMap) {
         setEditors(prev => {
           prev[0] = false;
           prev[1] = true;
@@ -36,21 +37,18 @@ export default function TableEditor() {
         })
       } else {
         setEditors(prev => {
-          prev[0] = false;
+
           prev[1] = false;
           return [...prev];
         })
       }
-    }
     const id = data.find(el => el.selected === true)
     if (id) {
       setId(id.id)
     }
   }, [data]);
 
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
+
 
   
   function idMaker(dataArr){
@@ -83,7 +81,6 @@ export default function TableEditor() {
     if (headers[pointer].sort % 2 === 0) {
       k = -1;
     }
-
     setData((prev) => {
       prev.sort((a, b) => {
         if (a[fieldName] < b[fieldName]) {
@@ -116,7 +113,7 @@ export default function TableEditor() {
     );
   }
 
-  function unselectAllRows() {
+  function unSelectAllRows() {
     setData(prev => prev.map(el => {return { ...el, selected: false }}))
   }
 
@@ -173,7 +170,7 @@ export default function TableEditor() {
       </table>
       <button
         onClick={() => {
-          // unselectAllRows();
+          unSelectAllRows();
           headerEditorController();
         }}
       >
