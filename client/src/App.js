@@ -6,6 +6,7 @@ import {
 import CreateEvent from "./CreateEvent/CreateEvent";
 import RegFormBloger from "./RegFormBloger/RegFormBloger";
 import SpecCabinet from './SpecCabinet/SpecCabinet';
+import Events from './Events/Events';
 
 function App() {
   return (
@@ -19,11 +20,14 @@ function App() {
         <Route exact path="/regBloger">
           <RegFormBloger />
         </Route>
-        <Route exact path="/SpecCabinet">
+        <Route exact path="/specCabinet">
           <SpecCabinet />
         </Route>
         <Route exact path="/eventNew">
           <CreateEvent />
+        </Route>
+        <Route exact path="/events">
+          <Events />
         </Route>
       </Switch>
     </Router>
