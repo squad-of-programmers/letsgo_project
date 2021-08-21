@@ -6,12 +6,13 @@ import serverData from "./seed";
 export default function TableEditor() {
   let systemHeaders = ["selected"];
   //Настройки для отображения, которые сохраняются на серваке
-  const [data, setData] = useState(serverData);
+  const [data, setData] = useState(idMaker(serverData));
   //Данные получаемые с сервера
   const [headers, setHeaders] = useState([]);
   //Заголовки таблицы
   const [editors, setEditors] = useState([false, false]);
   // [0] ->> Headers Editor, [1] ->> Data Editor
+  const [id, setId] = useState()
 
   useEffect(() => {
     setHeaders((prev) => {
@@ -25,9 +26,7 @@ export default function TableEditor() {
   }, []);
 
   useEffect(() => {
-
     let selectedMap = data.map(el => el.selected);
-
     if (Array.isArray(selectedMap)) {
       if (selectedMap.some(el => el === true)) {
         setEditors(prev => {
@@ -43,11 +42,23 @@ export default function TableEditor() {
         })
       }
     }
+    const id = data.find(el => el.selected === true)
+    if (id) {
+      setId(id.id)
+    }
   }, [data]);
 
-  // useEffect(() => {
-  //   console.log(editors);
-  // }, [editors]);
+  useEffect(() => {
+    console.log(id);
+  }, [id]);
+
+  
+  function idMaker(dataArr){
+    if(dataArr){
+      dataArr.forEach((el, indx) => el.id = indx + 1)
+      return dataArr;
+    }
+  }
 
   function changeHeadersPlaces(indx1, indx2) {
     setHeaders((prev) => {
@@ -105,6 +116,10 @@ export default function TableEditor() {
     );
   }
 
+  function unselectAllRows() {
+    setData(prev => prev.map(el => {return { ...el, selected: false }}))
+  }
+
   return (
     <div className="container">
       <input type="text" style={{ width: "100%" }} />
@@ -158,6 +173,7 @@ export default function TableEditor() {
       </table>
       <button
         onClick={() => {
+          // unselectAllRows();
           headerEditorController();
         }}
       >
@@ -174,7 +190,7 @@ export default function TableEditor() {
         ) : null}
       </div>
 
-      <div>{editors[1] === true ? <DataEditorPanel data={data} setData={setData}/> : null}</div>
+      <div>{editors[1] === true ? <DataEditorPanel data={data} setData={setData} id={id}/> : null}</div>
     </div>
   );
 }
