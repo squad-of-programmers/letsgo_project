@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DataEditorPanel from "./DataEditorPanel/DataEditorPanel";
 import HeaderEditorPanel from "./HeaderEditorPanel/HeaderEditorPanel";
-import serverData from "./itemsShopData";
+import serverData from "./seed";
 
 export default function TableEditor() {
   let systemHeaders = ["selected"];
